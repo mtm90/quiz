@@ -1,6 +1,6 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #ebd4cb;
+  background-color: #E6E4CE;
   display: flex;
   justify-content: center;
 }
@@ -9,7 +9,7 @@ body {
   width: 90%;
   padding: 10px;
   margin-top: 10px;
-  background-color: #da9f93;
+  background-color: #EBC3DB;
   box-shadow:4px 4px rgba(0, 0, 0, 0.7),
   -4px -4px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
@@ -21,6 +21,11 @@ body {
 h1 {
   text-align: center;
   font-size: 300%;
+  border: 3px solid black;
+  border-radius: 20px;
+  background-color: #9F84BD;
+
+
 }
 
 .question {
@@ -63,18 +68,19 @@ h1 {
 .button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #890620;
+  background-color: #C09BD8;
   color: #fff;
-  border: none;
+  border: 3px solid black;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  margin-right: 10px;
   border-radius: 20px;
 }
 
 .button:hover {
-  background-color: #b6465f;
+  background-color: #9F84BD;
+}
+#submit.button {
+  color: black;
+  font-size: xx-large;
 }
 
 .result {
@@ -92,7 +98,7 @@ h1 {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: #b6465f;
+  background-color: #9F84BD;
   border-radius: 20px;
   border: 3px solid black;
 }
