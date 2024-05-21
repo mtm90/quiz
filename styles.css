@@ -1,6 +1,6 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-color: #E6E4CE;
+  background-color: #EDE3E9;
   display: flex;
   justify-content: center;
 }
@@ -81,6 +81,7 @@ h1 {
 #submit.button {
   color: black;
   font-size: xx-large;
+
 }
 
 .result {
