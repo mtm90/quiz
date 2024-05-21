@@ -10,10 +10,12 @@ body {
   padding: 10px;
   margin-top: 10px;
   background-color: #da9f93;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  box-shadow:4px 4px rgba(0, 0, 0, 0.7),
+  -4px -4px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+
 }
 
 h1 {
@@ -92,6 +94,7 @@ h1 {
   align-items: center;
   background-color: #b6465f;
   border-radius: 20px;
+  border: 3px solid black;
 }
 
 @media (max-width: 480px) {
