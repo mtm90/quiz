@@ -18,17 +18,19 @@ body {
 
 }
 
-h1,
-h3 {
+h1
+ {
   text-align: center;
+  font-size: 350%;
 }
 
 .question {
   font-weight: bold;
   text-align: center;
   align-items: center;
-  font-size: x-large;
+  font-size: xx-large;
   width: 100%;
+  margin-top: 3%;
 }
 
 .options {
