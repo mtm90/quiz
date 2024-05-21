@@ -102,8 +102,8 @@ h3 {
 @media (max-width: 480px) {}
 
   .option img {
-  height: 20rem;
-  width: 20rem;
+  height: 15rem;
+  width: 15rem;
   
 
 }
@@ -114,7 +114,7 @@ h3 {
   align-items: flex-start;
 }
 .option {
-  width: 95%;
+  width: 90%;
   height: 23rem;
 
 }
