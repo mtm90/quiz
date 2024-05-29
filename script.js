@@ -236,21 +236,23 @@ const quizData = [
   }
   
   function sendAnswersToServer() {
-      fetch('http://localhost:3000', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userAnswers),
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Success:', data);
-      })
-      .catch((error) => {
-          console.error('Error:', error);
-      });
-  }
+    console.log('Sending user answers to server:', userAnswers); 
+    fetch('https://quiz-server-xhlx.onrender.com/', {  // Update this to your Render app URL
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userAnswers),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+}
+
   
   submitButton.addEventListener("click", checkAnswer);
   retryButton.addEventListener("click", retryQuiz);
