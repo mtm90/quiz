@@ -87,15 +87,14 @@ h1 {
 @media (max-width: 480px) {
   .options {
     grid-template-columns: repeat(1, 1fr);
-
-  }
-
-  .option {
-    width: 90%;
-    height: 23rem;
   }
 
   .button {
     padding: 15px 30px; /* Increase button padding for easier tapping */
+  }
+
+  .option img {
+    width: 10rem; /* Decrease image size for better fit on smaller screens */
+    height: 10rem; /* Decrease image size for better fit on smaller screens */
   }
 }
