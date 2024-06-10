@@ -358,7 +358,7 @@ function showAnswer() {
 
 function sendAnswersToServer() {
     console.log('Sending user answers to server:', userAnswers); 
-    fetch('https://quiz-server-f17q.onrender.com//submit-answers', {  // Update this to your Render app URL
+    fetch('https://quiz-server-f17q.onrender.com/submit-answers', {  // Update this to your Render app URL
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
