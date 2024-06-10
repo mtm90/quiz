@@ -237,7 +237,7 @@ function showAnswer() {
 
 function sendAnswersToServer() {
   console.log('Sending user answers to server:', userAnswers); 
-  fetch('https://quiz-server-xhlx.onrender.com', {  // Update this to your Render app URL
+  fetch('https://quiz-server-f17q.onrender.com/submit-answers', {  // Update this to your Render app URL
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -252,6 +252,7 @@ function sendAnswersToServer() {
       console.error('Error:', error);
   });
 }
+
 
 submitButton.addEventListener("click", checkAnswer);
 retryButton.addEventListener("click", retryQuiz);
