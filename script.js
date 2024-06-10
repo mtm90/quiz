@@ -233,123 +233,123 @@ let incorrectAnswers = [];
 let userAnswers = [];
 
 function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 function displayQuestion() {
-  const questionData = quizData[currentQuestion];
+    const questionData = quizData[currentQuestion];
 
-  const questionElement = document.createElement("div");
-  questionElement.className = "question";
-  questionElement.innerHTML = questionData.question;
+    const questionElement = document.createElement("div");
+    questionElement.className = "question";
+    questionElement.innerHTML = questionData.question;
 
-  const optionsElement = document.createElement("div");
-  optionsElement.className = "options";
+    const optionsElement = document.createElement("div");
+    optionsElement.className = "options";
 
-  const shuffledOptions = [...questionData.options];
-  shuffleArray(shuffledOptions);
+    const shuffledOptions = [...questionData.options];
+    shuffleArray(shuffledOptions);
 
-  for (let i = 0; i < shuffledOptions.length; i++) {
-    const option = document.createElement("label");
-    option.className = "option";
+    for (let i = 0; i < shuffledOptions.length; i++) {
+        const option = document.createElement("label");
+        option.className = "option";
 
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = "quiz";
-    radio.value = shuffledOptions[i].text;
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = "quiz";
+        radio.value = shuffledOptions[i].text;
 
-    const optionText = document.createTextNode(shuffledOptions[i].text);
+        const optionText = document.createTextNode(shuffledOptions[i].text);
 
-    const optionImage = document.createElement("img");
-    optionImage.src = shuffledOptions[i].img;
-    optionImage.alt = shuffledOptions[i].text;
+        const optionImage = document.createElement("img");
+        optionImage.src = shuffledOptions[i].img;
+        optionImage.alt = shuffledOptions[i].text;
 
-    option.appendChild(radio);
-    option.appendChild(optionImage);
-    option.appendChild(optionText);
-    optionsElement.appendChild(option);
-  }
+        option.appendChild(radio);
+        option.appendChild(optionImage);
+        option.appendChild(optionText);
+        optionsElement.appendChild(option);
+    }
 
-  quizContainer.innerHTML = "";
-  quizContainer.appendChild(questionElement);
-  quizContainer.appendChild(optionsElement);
+    quizContainer.innerHTML = "";
+    quizContainer.appendChild(questionElement);
+    quizContainer.appendChild(optionsElement);
 }
 
 function checkAnswer() {
-  const selectedOption = document.querySelector('input[name="quiz"]:checked');
-  if (selectedOption) {
-    const answer = selectedOption.value;
-    const correctAnswer = quizData[currentQuestion].answer;
+    const selectedOption = document.querySelector('input[name="quiz"]:checked');
+    if (selectedOption) {
+        const answer = selectedOption.value;
+        const correctAnswer = quizData[currentQuestion].answer;
 
-    userAnswers.push({
-      question: quizData[currentQuestion].question,
-      selectedAnswer: answer,
-      correctAnswer: correctAnswer,
-      isCorrect: answer === correctAnswer,
-    });
+        userAnswers.push({
+            question: quizData[currentQuestion].question,
+            selectedAnswer: answer,
+            correctAnswer: correctAnswer,
+            isCorrect: answer === correctAnswer
+        });
 
-    if (answer === correctAnswer) {
-      score++;
-    } else {
-      incorrectAnswers.push({
-        question: quizData[currentQuestion].question,
-        incorrectAnswer: answer,
-        correctAnswer: correctAnswer,
-      });
+        if (answer === correctAnswer) {
+            score++;
+        } else {
+            incorrectAnswers.push({
+                question: quizData[currentQuestion].question,
+                incorrectAnswer: answer,
+                correctAnswer: correctAnswer,
+            });
+        }
+        currentQuestion++;
+        selectedOption.checked = false;
+        if (currentQuestion < quizData.length) {
+            displayQuestion();
+        } else {
+            sendAnswersToServer();
+            displayResult();
+        }
     }
-    currentQuestion++;
-    selectedOption.checked = false;
-    if (currentQuestion < quizData.length) {
-      displayQuestion();
-    } else {
-      sendAnswersToServer();
-      displayResult();
-    }
-  }
 }
 
 function displayResult() {
-  quizContainer.style.display = "none";
-  submitButton.style.display = "none";
-  retryButton.style.display = "inline-block";
-  showAnswerButton.style.display = "inline-block";
-  resultContainer.innerHTML = `You scored ${score} out of ${quizData.length}!`;
+    quizContainer.style.display = "none";
+    submitButton.style.display = "none";
+    retryButton.style.display = "inline-block";
+    showAnswerButton.style.display = "inline-block";
+    resultContainer.innerHTML = `You scored ${score} out of ${quizData.length}!`;
 }
 
 function retryQuiz() {
-  currentQuestion = 0;
-  score = 0;
-  incorrectAnswers = [];
-  userAnswers = [];
-  quizContainer.style.display = "block";
-  submitButton.style.display = "inline-block";
-  retryButton.style.display = "none";
-  showAnswerButton.style.display = "none";
-  resultContainer.innerHTML = "";
-  displayQuestion();
+    currentQuestion = 0;
+    score = 0;
+    incorrectAnswers = [];
+    userAnswers = [];
+    quizContainer.style.display = "block";
+    submitButton.style.display = "inline-block";
+    retryButton.style.display = "none";
+    showAnswerButton.style.display = "none";
+    resultContainer.innerHTML = "";
+    displayQuestion();
 }
 
 function showAnswer() {
-  quizContainer.style.display = "none";
-  submitButton.style.display = "none";
-  retryButton.style.display = "inline-block";
-  showAnswerButton.style.display = "none";
+    quizContainer.style.display = "none";
+    submitButton.style.display = "none";
+    retryButton.style.display = "inline-block";
+    showAnswerButton.style.display = "none";
 
-  let incorrectAnswersHtml = "";
-  for (let i = 0; i < incorrectAnswers.length; i++) {
-    incorrectAnswersHtml += `
+    let incorrectAnswersHtml = "";
+    for (let i = 0; i < incorrectAnswers.length; i++) {
+        incorrectAnswersHtml += `
             <p>
                 <strong>Question:</strong> ${incorrectAnswers[i].question}<br>
                 <strong>Your Answer:</strong> ${incorrectAnswers[i].incorrectAnswer}<br>
                 <strong>Correct Answer:</strong> ${incorrectAnswers[i].correctAnswer}
             </p>
         `;
-  }
+    }
 
-  resultContainer.innerHTML = `
+    resultContainer.innerHTML = `
         <p>You scored ${score} out of ${quizData.length}!</p>
         <p>Incorrect Answers:</p>
         ${incorrectAnswersHtml}
@@ -357,21 +357,20 @@ function showAnswer() {
 }
 
 function sendAnswersToServer() {
-  console.log("Sending user answers to server:", userAnswers);
-  fetch("https://quiz-server-f17q.onrender.com/submit-answers", {
-    // Update this to your Render app URL
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(userAnswers),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
+    console.log('Sending user answers to server:', userAnswers); 
+    fetch('https://quiz-server-f17q.onrender.com//submit-answers', {  // Update this to your Render app URL
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userAnswers),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
     })
     .catch((error) => {
-      console.error("Error:", error);
+        console.error('Error:', error);
     });
 }
 
